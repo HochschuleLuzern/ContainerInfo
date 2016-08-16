@@ -1,0 +1,17 @@
+<!-- language file start -->
+title#:#Container Info
+size#:#Grösse
+subobj_counter#:#Anzahl Subobjekte
+newest_read#:#Zuletzt geöffnet
+name_of_object#:#Objektname
+clicks_in_last_six_months#:#Klicks in den letzten 6 Monaten
+clicks#:#Klicks
+cat_obj#:#Kategorie
+fold_obj#:#Ordner
+grp_obj#:#Gruppe
+crs_obj#:#Kurs
+container_type#:#Typ
+no_containers_available#:#Hier scheinen keine Container vorhanden zu sein...
+ajax_btn_load_infos#:#Informationen laden
+ajax_text_load_info#:#In dieser Box werden Informationen über die hier enthaltenen Container angezeigt. Das Laden der Informationen über die Container kann je nach grösse einige Zeit in anspruch nehmen. Aus diesem Grund geschieht dies erst beim klick auf den "Laden"-Button unten.
+ajax_past_time#:#Vergangene Zeit:

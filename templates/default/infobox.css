@@ -1,0 +1,48 @@
+.last_use_this_year{
+	color: #00CA00;
+}
+
+.last_use_over_1_year{
+	color: #CAD006;
+}
+
+.last_use_over_2_years{
+	color: #FF8306;
+}
+
+.last_use_over_4_years{
+	color: #CA5B00;
+}
+
+.last_use_over_6_years{
+	color: #CA0000;
+}
+
+.container_infobox{
+	font-size: 10px;
+	border-bottom: 1px solid #dcdcdc;
+	margin-top: 3px;
+}
+.container_infobox:last-child{
+	border-bottom: none;
+}
+
+h4.il_ContainerItemTitle 
+{
+	display: block;
+}
+
+span.container_obj_title
+{
+	display: block;
+	font-weight: bold;
+	font-size: 12px;
+	color: inherit;
+}
+
+a.ajax_btn
+{
+	text-align:center;
+	width: auto;
+	height: auto; 
+}
