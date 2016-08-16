@@ -68,7 +68,6 @@ class ilContainerInfoGUI
                 $tpl = new ilTemplate("tpl.infobox.html", true, true, "Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo");
                 $tpl->setCurrentBlock("infobox");
 
-                $tpl->setVariable("CONTAINER_TYPE_LABEL", $this->plugin->txt('container_type'));
                 $tpl->setVariable("CONTAINER_SIZE_LABEL", $this->plugin->txt('size'));
                 $tpl->setVariable("SUBOBJ_COUNTER_LABEL", $this->plugin->txt('subobj_counter'));
                 $tpl->setVariable("TEXT_COLOR_CLASS", $this->coloringNewestRead($timestamp));
