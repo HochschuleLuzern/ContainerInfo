@@ -1,5 +1,6 @@
 <?php
 include_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo/classes/class.ilContainerInfoGUI.php');
+include_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo/classes/class.ilContainerInfoAccess.php');
 /**
 * Ajax-handler class
 *
@@ -19,16 +20,25 @@ class ilContainerInfoAjaxHandler
     
     public function executeCommand()
     {
-        global $ilCtrl, $tpl;
+        global $ilCtrl, $tpl, $ilUser;
         $cmd = $ilCtrl->getCmd();
         
-        switch(strtolower($cmd))
+        if(ilContainerInfoAccess::checkAccess($ilUser->getId()))
         {
-            case 'getcontainerinfos':
-                echo $this->returnContainerInfos();
-                exit;
-            default:
-                break;
+            switch(strtolower($cmd))
+            {
+                case 'getcontainerinfos':
+                    echo $this->returnContainerInfos();
+                    exit;
+                default:
+                    echo 'cmd unknown...';
+                    exit;
+                    break;
+            }
+        }
+        else 
+        {
+            echo 'Permission denied.';exit;
         }
     }
 	
