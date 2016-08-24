@@ -54,6 +54,12 @@ class ilContainerObject
 	public $newest_read_event = array();
 	
 	/**
+	 * If true, admin clicks will be ignored
+	 * @var boolean
+	 */
+	public $ignore_admin_clicks = true;
+	
+	/**
 	 * Constructor
 	 */
 	public function __construct($ref_id)
@@ -232,28 +238,35 @@ class ilContainerObject
 		$is_over_six_months = false;
 		while(($obj = $ilDB->fetchAssoc($res)) !== null && !$is_over_six_months)
 		{
-			$timestamp = $obj['last_access'];
-			$obj_id = $obj['obj_id'];
-			$usr_id = $obj['usr_id'];
-			
-			// Check if this is the newest readevent
-			// if($this->newest_read_event === null || $this->newest_read_event->timestamp < $timestamp)
-			if($this->newest_read_event === null || $this->newest_read_event['timestamp'] < $timestamp)
-			{		
-				$this->newest_read_event['timestamp'] = $timestamp;
-				$this->newest_read_event['obj_id'] = $obj_id;
-				//$this->newest_read_event = new ilAccessEvent($obj_id, $timestamp, $usr_id);				
-			}	
-			
-			// count clicks for the last six months
-			if(strtotime('-6 month') > $timestamp)
-			{
-				$is_over_six_months = true;
-			}
-			else
-			{
-				$this->clicks_in_last_six_months += $obj['read_count'];			
-			}	
+		    $timestamp = $obj['last_access'];
+		    $usr_id = $obj['usr_id'];
+		    
+    	    if(!($this->ignore_admin_clicks && ilContainerInfoAccess::isAdmin($usr_id)))
+    	    {
+    			
+    			// Check if this is the newest readevent
+    			// if($this->newest_read_event === null || $this->newest_read_event->timestamp < $timestamp)
+    			if($this->newest_read_event === null || $this->newest_read_event['timestamp'] < $timestamp)
+    			{		
+    				$this->newest_read_event['timestamp'] = $timestamp;
+    				$this->newest_read_event['obj_id'] = $obj_id;
+    				//$this->newest_read_event = new ilAccessEvent($obj_id, $timestamp, $usr_id);				
+    			}	
+    			
+    			// count clicks for the last six months
+    			if(strtotime('-6 month') > $timestamp)
+    			{
+    				$is_over_six_months = true;
+    			}
+    			else
+    			{
+    				$this->clicks_in_last_six_months += $obj['read_count'];			
+    			}	
+    	    }
+    	    else if(strtotime('-6 month') > $timestamp)
+    	    {
+    	        $is_over_six_months = true;
+    	    }
 		}
 	}
 	

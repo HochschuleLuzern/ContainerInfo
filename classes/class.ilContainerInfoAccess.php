@@ -34,6 +34,7 @@ include_once("./Services/AccessControl/classes/class.ilRbacReview.php");
  */
 class ilContainerInfoAccess extends ilObjectPluginAccess 
 {
+    private static $admin_role_id = 0;
 	/**
 	 * Checks if the user has Access to this plugin
 	 * @param integer $a_usr_id
@@ -41,15 +42,8 @@ class ilContainerInfoAccess extends ilObjectPluginAccess
 	 */
 	static function checkAccess($a_usr_id) 
 	{
-		$ilRbacReview = new ilRbacReview();
-				
-		$admin_role_id = self::getAdminRoleID();
-		if($admin_role_id != 0)
-		{
-			return $ilRbacReview->isAssigned($a_usr_id, $admin_role_id);
-		}
 		
-		return false;
+		return self::isAdmin($a_usr_id);
 	}
 
 	/**
@@ -61,10 +55,14 @@ class ilContainerInfoAccess extends ilObjectPluginAccess
 	{		
 		global $ilDB;
 
-		if(preg_match("/Administrator.*/", ilObject::_lookupTitle(2))
-			&& ilObject::_lookupType(2) == "role")
+		if(self::$admin_role_id == 0)
 		{
-			return 2;
+		    if(preg_match("/Administrator.*/", ilObject::_lookupTitle(2))
+			&& ilObject::_lookupType(2) == "role")
+    		{
+    		    self::$admin_role_id = 2;
+    			return self::$admin_role_id;
+    		}
 		}
 		/*
 		$query = sprintf("SELECT obj_id FROM object_data " .
@@ -79,7 +77,22 @@ class ilContainerInfoAccess extends ilObjectPluginAccess
 		*/
 		return 0;
 	}
+    
+	public static function isAdmin($a_user_id = 0)
+	{
+	    global $ilUser, $rbacreview;
 
+	    if($a_user_id == 0)
+	    {
+	        $a_user_id = $ilUser->getId();
+	    }
+	    
+	    if(self::$admin_role_id == 0)
+	    {
+	        self::getAdminRoleID();
+	    }
+	    return $rbacreview->isAssigned($a_user_id, self::$admin_role_id);
+	}
 }
 
 ?>
