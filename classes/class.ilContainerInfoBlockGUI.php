@@ -22,7 +22,7 @@ class ilContainerInfoBlockGUI extends ilBlockGUI
 	public function __construct()
 	{
 	    global $tpl;
-		parent::ilBlockGUI();
+		parent::__construct();
 		$this->plugin = new ilContainerInfoPlugin();
 		$this->setTitle($this->plugin->txt('title'));
 		$this->global_tpl = $tpl;
