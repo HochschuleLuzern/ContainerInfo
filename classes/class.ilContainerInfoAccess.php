@@ -42,7 +42,6 @@ class ilContainerInfoAccess extends ilObjectPluginAccess
 	 */
 	static function checkAccess($a_usr_id) 
 	{
-		
 		return self::isAdmin($a_usr_id);
 	}
 

@@ -21,10 +21,11 @@ class ilContainerInfoUIHookGUI extends ilUIHookPluginGUI
 	 */
 	function getHTML($a_comp, $a_part, $a_par = array())
 	{
+		global $ilUser;
 		if($a_comp == 'Services/Container' && $a_part == 'right_column')
 		{
 			$ref_id = (int)$_GET['ref_id'];
-			$user_id = $_SESSION['AccountId'];
+			$user_id = $ilUser->getId();
 			
 			if(ilContainerInfoAccess::checkAccess($user_id) && $ref_id > 0)
 			{		
