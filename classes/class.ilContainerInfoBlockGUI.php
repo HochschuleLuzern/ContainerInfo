@@ -32,7 +32,7 @@ class ilContainerInfoBlockGUI extends ilBlockGUI
 	 * Get block type
 	 * @return    string    Block type.
 	 */
-	static function getBlockType() {
+	function getBlockType() : string {
 		return self::$block_type;
 	}
 	
@@ -40,7 +40,7 @@ class ilContainerInfoBlockGUI extends ilBlockGUI
 	 * Get block type
 	 * @return    string    Block type.
 	 */
-	static function isRepositoryObject() {
+	function isRepositoryObject() : bool {
 		return false;
 	}
 	
