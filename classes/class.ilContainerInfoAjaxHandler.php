@@ -13,20 +13,18 @@ include_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 
 class ilContainerInfoAjaxHandler
 {
-	function __construct()
-	{
-	    $this->ref_id = $_GET['ref_id'];
-	}
+    public function __construct()
+    {
+        $this->ref_id = $_GET['ref_id'];
+    }
     
     public function executeCommand()
     {
         global $ilCtrl, $tpl, $ilUser;
         $cmd = $ilCtrl->getCmd();
         
-        if(ilContainerInfoAccess::checkAccess($ilUser->getId()))
-        {
-            switch(strtolower($cmd))
-            {
+        if (ilContainerInfoAccess::checkAccess($ilUser->getId())) {
+            switch (strtolower($cmd)) {
                 case 'getcontainerinfos':
                     echo $this->returnContainerInfos();
                     exit;
@@ -35,13 +33,12 @@ class ilContainerInfoAjaxHandler
                     exit;
                     break;
             }
-        }
-        else 
-        {
-            echo 'Permission denied.';exit;
+        } else {
+            echo 'Permission denied.';
+            exit;
         }
     }
-	
+    
     public function returnContainerInfos()
     {
         $containers = ilContainerObject::getChildContainerFromParentRefId($this->ref_id);
@@ -57,5 +54,3 @@ class ilContainerInfoAjaxHandler
         return $container_info->getHtml();
     }
 }
-
-?>

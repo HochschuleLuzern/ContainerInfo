@@ -2,7 +2,7 @@
 class ilContainerInfoGUI
 {
     private $containers;
-    static $block_type = 'containerinfo';
+    public static $block_type = 'containerinfo';
 
     /**
      * Constructor
@@ -23,25 +23,16 @@ class ilContainerInfoGUI
      */
     private function sizeToReadableString($size)
     {
-        if($size < 1024)
-        {
+        if ($size < 1024) {
             return $size . ' Byte';
-        }
-        else if($size < 1048576)
-        {
-            return round(($size/1024), 2) . ' kB';
-        }
-        else if($size < 1073741824)
-        {
-            return round(($size/1048576), 2) . ' MB';
-        }
-        else if($size < 1099511627776)
-        {
-            return round(($size/1073741824), 2) . ' GB';
-        }
-        else if($size < 1125899906842624)
-        {
-            return round(($size/1099511627776), 2) .  ' TB';
+        } elseif ($size < 1048576) {
+            return round(($size / 1024), 2) . ' kB';
+        } elseif ($size < 1073741824) {
+            return round(($size / 1048576), 2) . ' MB';
+        } elseif ($size < 1099511627776) {
+            return round(($size / 1073741824), 2) . ' GB';
+        } elseif ($size < 1125899906842624) {
+            return round(($size / 1099511627776), 2) . ' TB';
         }
     }
 
@@ -58,10 +49,8 @@ class ilContainerInfoGUI
         $this->global_tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo/templates/default/infobox.css');
         $html_output = '';
 
-        foreach($this->containers as $container)
-        {
-            if(ilContainerObject::isContainer($container->type))
-            {
+        foreach ($this->containers as $container) {
+            if (ilContainerObject::isContainer($container->type)) {
                 $timestamp = $container->newest_read_event['timestamp'];
                 $timestamp_as_date = date('Y-m-d H:i:s', $timestamp);
 
@@ -87,8 +76,7 @@ class ilContainerInfoGUI
             }
         }
 
-        if(count($this->containers) == 0)
-        {
+        if (count($this->containers) == 0) {
             $html_output = $this->plugin->txt('no_containers_available');
         }
         return $html_output;
@@ -101,26 +89,16 @@ class ilContainerInfoGUI
      */
     private function coloringNewestRead($timestamp)
     {
-        if(strtotime('-1 year') < $timestamp)
-        {
+        if (strtotime('-1 year') < $timestamp) {
             return "last_use_this_year";
-        }
-        else if(strtotime('-2 year') < $timestamp)
-        {
+        } elseif (strtotime('-2 year') < $timestamp) {
             return "last_use_over_1_year";
-        }
-        else if(strtotime('-4 year') < $timestamp)
-        {
+        } elseif (strtotime('-4 year') < $timestamp) {
             return "last_use_over_2_years";
-        }
-        else if(strtotime('-6 year') < $timestamp)
-        {
+        } elseif (strtotime('-6 year') < $timestamp) {
             return "last_use_over_4_years";
-        }
-        else
-        {
+        } else {
             return "last_use_over_6_years";
         }
     }
 }
-?>

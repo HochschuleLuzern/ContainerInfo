@@ -10,10 +10,8 @@ include_once("./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php
 */
 class ilContainerInfoPlugin extends ilUserInterfaceHookPlugin
 {
-	function getPluginName()
-	{
-		return "ContainerInfo";
-	}	
+    public function getPluginName()
+    {
+        return "ContainerInfo";
+    }
 }
-
-?>
