@@ -1,17 +1,20 @@
+/**
+/ German Language File for Container-Info-Plugin
+**/
 <!-- language file start -->
-title#:#Container Info
-size#:#Grösse
-subobj_counter#:#Anzahl Subobjekte
-newest_read#:#Zuletzt geöffnet
-name_of_object#:#Objektname
-clicks_in_last_six_months#:#Klicks in den letzten 6 Monaten
-clicks#:#Klicks
+ajax_btn_load_infos#:#Informationen laden
+ajax_past_time#:#Vergangene Zeit:
+ajax_text_load_info#:#In dieser Box werden Informationen über die hier enthaltenen Container angezeigt. Das Laden der Informationen über die Container kann je nach grösse einige Zeit in anspruch nehmen. Aus diesem Grund geschieht dies erst beim klick auf den "Laden"-Button unten.
 cat_obj#:#Kategorie
+clicks#:#Klicks
+clicks_in_last_six_months#:#Klicks in den letzten 6 Monaten
+container_type#:#Typ
+crs_obj#:#Kurs
 fold_obj#:#Ordner
 grp_obj#:#Gruppe
-crs_obj#:#Kurs
-container_type#:#Typ
+name_of_object#:#Objektname
+newest_read#:#Zuletzt geöffnet
 no_containers_available#:#Hier scheinen keine Container vorhanden zu sein...
-ajax_btn_load_infos#:#Informationen laden
-ajax_text_load_info#:#In dieser Box werden Informationen über die hier enthaltenen Container angezeigt. Das Laden der Informationen über die Container kann je nach grösse einige Zeit in anspruch nehmen. Aus diesem Grund geschieht dies erst beim klick auf den "Laden"-Button unten.
-ajax_past_time#:#Vergangene Zeit:
+size#:#Grösse
+subobj_counter#:#Anzahl Subobjekte
+title#:#Container Info
