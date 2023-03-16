@@ -52,7 +52,7 @@ class ilContainerInfoBlockGUI extends ilBlockGUI
      *
      * @return	Information of Containers as html
      */
-    public function fillDataSection()
+    public function fillDataSection(): void
     {
         global $ilCtrl;
         

@@ -20,7 +20,7 @@
     | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
     +-----------------------------------------------------------------------------+
 */
-include_once("./Services/Repository/classes/class.ilObjectPluginAccess.php");
+include_once("./Services/Repository/PluginSlot/class.ilObjectPluginAccess.php");
 include_once("./Services/AccessControl/classes/class.ilRbacReview.php");
 
 /**

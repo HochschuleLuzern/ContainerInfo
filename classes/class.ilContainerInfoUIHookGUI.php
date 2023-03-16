@@ -19,7 +19,7 @@ class ilContainerInfoUIHookGUI extends ilUIHookPluginGUI
      * {@inheritDoc}
      * @see ilUIHookPluginGUI::getHTML()
      */
-    public function getHTML($a_comp, $a_part, $a_par = array())
+    public function getHTML(string $a_comp, string $a_part, array $a_par = array()): array
     {
         global $ilUser;
         if ($a_comp == 'Services/Container' && $a_part == 'right_column') {
