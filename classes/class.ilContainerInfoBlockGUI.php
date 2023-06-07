@@ -8,7 +8,7 @@ include_once './Services/UICore/classes/class.ilTemplate.php';
  * BlockGUI class for Container Info Block
  * @author Raphael Heer <raphael.heer@hslu.ch>
  * @version $Id$
- * @ilCtrl_IsCalledBy ilContaienrInfoBlockGUI: ilColumnGUI
+ * @ilCtrl_IsCalledBy ilContainerInfoBlockGUI: ilColumnGUI
  */
 class ilContainerInfoBlockGUI extends ilBlockGUI
 {
@@ -63,13 +63,15 @@ class ilContainerInfoBlockGUI extends ilBlockGUI
         $tpl = new ilTemplate("tpl.content_for_ajax.html", true, true, "Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo");
         
         $ref_id = $_GET['ref_id'];
-        $ilCtrl->setParameterByClass('ilContainerInfoAjaxHandler', 'ref_id', $ref_id);
-        
+        $ilCtrl->setParameterByClass('ilContainerInfoAjaxHandlerGUI', 'ref_id', $ref_id);
+
         $ajax_link = $ilCtrl->getLinkTargetByClass(array(
                             'ilUIPluginRouterGUI',
-                            'ilContainerInfoAjaxHandler',
+                            'ilContainerInfoAjaxHandlerGUI',
                     ), 'getContainerInfos');
-        
+        /*
+        $ajax_link = "ilias.php?ref_id=1&cmd=getContainerInfos&cmdClass=ilcontainerinfoajaxhandlergui&cmdNode=19e:9j&baseClass=iluipluginroutergui";
+         */
         $tpl->setCurrentBlock("container_info_ajax_target");
         $tpl->setVariable("CONTAINER_INFO_AJAX_LINK", $ajax_link);
         

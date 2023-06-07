@@ -8,10 +8,10 @@ include_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 * @version $Id$
 * @ingroup ServicesUIComponent
 *
-* @ilCtrl_isCalledBy ilContainerInfoAjaxHandler: ilRouterGUI, ilUIPluginRouterGUI
+* @ilCtrl_isCalledBy ilContainerInfoAjaxHandlerGUI : ilUIPluginRouterGUI
 */
 
-class ilContainerInfoAjaxHandler
+class ilContainerInfoAjaxHandlerGUI
 {
     public function __construct()
     {

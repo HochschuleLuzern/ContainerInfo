@@ -51,8 +51,8 @@ class ilContainerInfoGUI
 
         foreach ($this->containers as $container) {
             if (ilContainerObject::isContainer($container->type)) {
-                $timestamp = $container->newest_read_event['timestamp'];
-                $timestamp_as_date = date('Y-m-d H:i:s', $timestamp);
+                $timestamp = $container->newest_read_event['timestamp'] ?? null;
+                $timestamp_as_date = $timestamp ? date('Y-m-d H:i:s', $timestamp) : '';
 
                 $tpl = new ilTemplate("tpl.infobox.html", true, true, "Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ContainerInfo");
                 $tpl->setCurrentBlock("infobox");
@@ -69,7 +69,7 @@ class ilContainerInfoGUI
                 $tpl->setVariable("CONTAINER_SIZE_VAL", $this->sizeToReadableString($container->size));
                 $tpl->setVariable("SUBOBJ_COUNTER_VAL", $container->subobj_counter);
                 $tpl->setVariable("LAST_READ_EVENT_VAL", $timestamp_as_date);
-                $tpl->setVariable("LAST_READ_OBJ_NAME_VAL", ilObject::_lookupTitle($container->newest_read_event['obj_id']));
+                $tpl->setVariable("LAST_READ_OBJ_NAME_VAL", isset($container->newest_read_event['obj_id']) ? ilObject::_lookupTitle($container->newest_read_event['obj_id']) : '');
                 $tpl->setVariable("CLICKCOUNTER_VAL", $container->clicks_in_last_six_months);
                 $tpl->parseCurrentBlock();
                 $html_output .= $tpl->get();

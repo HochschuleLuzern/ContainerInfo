@@ -10,6 +10,12 @@ include_once("./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php
 */
 class ilContainerInfoPlugin extends ilUserInterfaceHookPlugin
 {
+    public function __construct()
+    {
+        global $DIC;
+        $this->db = $DIC->database();
+        parent::__construct($this->db, $DIC["component.repository"], "containerinfo");
+    }
     public function getPluginName(): string
     {
         return "ContainerInfo";
